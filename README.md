@@ -4,7 +4,7 @@
 
 1. We could run this script in a Jenkins pipeline giving the needed attributes or automating the execution to be executed in a Lambda with pre-defined parameters.
 
-2. By default the script will only show the files that will be deleted, and if we need them to be deleted, we can pass the DRY_RUN variable with the "true" value to delete the files.
+2. By default the script will only show the files that will be deleted, and if we need them to be deleted, we can pass the DRY_RUN variable with the "false" value to delete the files.
 
 3. We can update the script to receive a count at each file that is located and circle that to keep N number of files in the desired date.
 
