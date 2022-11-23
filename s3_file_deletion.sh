@@ -17,10 +17,10 @@ errorIfEmpty "AWS_REGION" ${AWS_REGION}
 errorIfEmpty "AWS_PROFILE" ${AWS_PROFILE}
 errorIfEmpty "BUCKET_NAME" ${BUCKET_NAME}
 
-DRY_RUN=${DRY_RUN-false}
+DRY_RUN=${DRY_RUN-true}
 
 aws --profile ${AWS_PROFILE} --region ${AWS_REGION} s3api list-objects-v2 --bucket ${BUCKET_NAME} --query "Contents[?contains(LastModified, \`$DATE\`)].Key" | while read OBJECT; do
-  if [[ ${DRY_RUN} = "true" ]]; then
+  if [[ ${DRY_RUN} = "false" ]]; then
     aws --profile ${AWS_PROFILE} --region ${AWS_REGION} s3 rm s3://${BUCKET_NAME}/"${OBJECT}"
     echo "${OBJECT} S3 OBJECT DELETED"
   else
